@@ -1,5 +1,5 @@
 import React from 'react'
-import avatarImg from '../../assets/images/gio.jpg'
+import avatarImg from '../../assets/images/leo.jpg'
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
 import './styles.css'
 
@@ -9,21 +9,19 @@ function TeacherItem() {
             <header>
                 <img src={avatarImg} alt="Giordano Einstein Dorneles" />
                 <div>
-                    <strong>Giordano Einstein Dorneles</strong>
-                    <span>Química</span>
+                    <strong>Leonardo Borges Neres</strong>
+                    <span>TI</span>
                 </div>
             </header>
             <p>
-                Entusiasta das melhores tecnologias de química avançada.
+            O bacharel da Ciência da Computação trabalha, fundamentalmente, na elaboração de programas de informática, para computadores ou dispositivos móveis, como celulares e tablets.
                         <br /> <br />
-                        Apaixonado por explodir coisas em laboratório e por mudar a vida das
-                        pessoas através de experiências. Mais de 200.000 pessoas já passaram por
-                        uma das minhas explosões.
+                        O aluno aprende sobre varias disciplinas que formam a computação muito téoricamente, pois o curso não tem tempo para aprofundameto de cada disciplina
                     </p>
             <footer>
                 <p>
                     Preço/hora
-                            <strong>R$: 20,00</strong>
+                            <strong>R$: 30,00</strong>
                 </p>
                 <button type="button">
                     <img src={whatsappIcon} alt="Whatsapp" />
