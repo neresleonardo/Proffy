@@ -1,35 +1,62 @@
-import React from 'react'
-import avatarImg from '../../assets/images/leo.jpg'
-import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
-import './styles.css'
+import React from 'react';
 
-function TeacherItem() {
-    return (
-        <article className="teacher-item">
-            <header>
-                <img src={avatarImg} alt="Giordano Einstein Dorneles" />
-                <div>
-                    <strong>Leonardo Borges Neres</strong>
-                    <span>TI</span>
-                </div>
-            </header>
-            <p>
-            O bacharel da Ciência da Computação trabalha, fundamentalmente, na elaboração de programas de informática, para computadores ou dispositivos móveis, como celulares e tablets.
-                        <br /> <br />
-                        O aluno aprende sobre varias disciplinas que formam a computação muito téoricamente, pois o curso não tem tempo para aprofundameto de cada disciplina
-                    </p>
-            <footer>
-                <p>
-                    Preço/hora
-                            <strong>R$: 30,00</strong>
-                </p>
-                <button type="button">
-                    <img src={whatsappIcon} alt="Whatsapp" />
-                            Entrar em contato
-                        </button>
-            </footer>
-        </article>
-    )
+import api from '../../services/api';
+
+import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
+
+import './styles.css';
+
+export interface Teacher {
+    id: number,
+    subject: string,
+    cost: number,
+    name: string,
+    avatar: string,
+    whatsapp:string,
+    bio: string,
 }
 
-export default TeacherItem
+interface TeacherItemProps {
+  teacher: Teacher
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
+
+  function createNewConnection() {
+    api.post('/connections', {
+      user_id: teacher.id
+    })
+  }
+  return (
+    <article className="teacher-item">
+      <header>
+        <img src={teacher.avatar} alt="Breno"/>
+        <div>
+          <strong>{teacher.name}</strong>
+          <span>{teacher.subject}</span>
+        </div>
+      </header>
+
+      <p>
+        {teacher.bio}
+      </p>
+
+      <footer>
+        <p>
+          Preço/hora:<strong>R$ {teacher.cost}</strong> 
+        </p>
+        <a 
+          target="_blank"
+          href={`https://api.whatsapp.com/send?phone=${teacher.whatsapp}`}
+          onClick={createNewConnection}
+        >
+          <img src={whatsappIcon} alt="Whatsapp"/>
+          Entrar em contato
+        </a>
+      </footer>
+
+    </article>
+  )
+}
+
+export default TeacherItem;
