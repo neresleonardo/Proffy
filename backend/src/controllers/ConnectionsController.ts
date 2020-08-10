@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable class-methods-use-this */
 import { Request, Response } from 'express';
-import db from '../database/connection';
+import db from '../db/connection';
 
 export default class ConnectionsController {
   async index(req: Request, res: Response) {
